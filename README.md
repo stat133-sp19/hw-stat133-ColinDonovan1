@@ -41,7 +41,7 @@ Workout 1:
 + ### report
 + This folder contains the files for the dynamic document.
 
-Workout 2
-Workout 3
+Workout 2:
+Workout 3:
 
 

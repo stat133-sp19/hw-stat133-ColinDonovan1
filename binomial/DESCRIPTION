@@ -6,7 +6,7 @@ Author: person(c("Colin", "Donovan", email = "colindonovan17@gmail.com", role = 
 Maintainer: The package maintainer <yourself@somewhere.net>
 Description: This package simplifies binomial distribution calculations and visualizations. 
     For calculations, this includes anything from probability of an outcome, to the distribution
-    with the given parameters. This package also allows you to plot and summarize this information
+    with the given parameters. This package also allows the user to plot and summarize this information
     easily
 License: MIT
 Encoding: UTF-8

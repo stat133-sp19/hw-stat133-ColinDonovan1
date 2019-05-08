@@ -1,0 +1,173 @@
+---
+title: "vignette for binomial"
+author: "Colin Donovan"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(binomial)
+```
+
+##Using the Binomial Package
+***
+#####The binomial package is a fairly simple and straightforward package, directed at those trying to compute, summarize, and/or visualize simple binomial distribution-related calculations.
+
+####Possible Computation
+
+There are 5 *basic* computational functions included in the binomial package:
+
+* bin_mean, which calculates mean
+* bin_mode, which calculates mode
+* bin_variance, which calculates variance
+* bin_kurtosis, which calculates kurtosis
+* bin_skewness, which calculates skewness
+
+*Note: all the functions listed above take inputs 'trials' and 'prob'.*
+
+...and here's an example of how you might use them:
+
+```{r bin_mean example}
+#bin_mean(10, 0.3)
+#where 10 is the number of trials, and 0.3 is the probability of something occuring
+bin_mean(10, 0.3)
+#gives the mean, or average
+```
+
+```{r bin_mode example}
+#bin_mode(10, 0.3)
+#where 10 is the number of trials, and 0.3 is the 
+bin_mode(10, 0.3)
+#gives the mode
+#depending on your input, this can return either 1 integer, or 2 integers
+```
+for more information on this, visit:
+
+[mode information](https://en.wikipedia.org/wiki/Binomial_distribution#Mode)
+
+```{r bin_variance example}
+#bin_variance(10, 0.3)
+#where 10 is the number of trials, and 0.3 is the probability of something occuring
+bin_variance(10, 0.3)
+#gives the variance of the probability distribution
+```
+
+```{r bin_kurtosis example}
+#bin_kurtosis(10, 0.3)
+#where 10 is the number of trials, and 0.3 is the probability of something occuring
+bin_kurtosis(10, 0.3)
+#gives the kurtosis of the probability distribution
+```
+
+```{r bin_skewness example}
+#bin_skewness(10, 0.3)
+#where 10 is the number of trials, and 0.3 is the probability of something occuring
+bin_skewness(10, 0.3)
+#gives the skewness of the probability distribution
+```
+
+On top of these, there are 4 *main* computational functions included in the binomial package:
+
+* bin_choose, which calculates the binomial coefficient
+  (see [Binomial Coefficient](https://en.wikipedia.org/wiki/Binomial_coefficient) for more information)
+* bin_probability, which calculates the probability of a given event occuring over a certain number of trials
+* bin_distribution, which calculates probability distribution, and displays it in data frame form
+* bin_cumulative, which calculates cumulative probability distrution, and displays it in data frame form
+
+*Note: the functions listed above take some combination of inputs 'trials', 'success' and 'prob'.*
+*except bin_choose, which takes n and k.*
+
+...and here's an example of how you might use them:
+
+```{r bin_choose example}
+#bin_choose(5, 2)
+#which can be read, 5 choose 2
+#this is like having 5 objects, and seeing how many different ways you can pick 2 objects from that assortment
+bin_choose(5, 2)
+#gives the number of combinations possible
+```
+
+```{r bin_probability example}
+#bin_probability(5, 10, 0.5)
+#this is the only function with 3 arguments, success, trials, and prob
+bin_probability(5, 10, 0.5)
+#which returns a the probability of a specified number of successes occuring over 
+```
+
+```{r bin_istribution example}
+#bin_distribution(10, 0.5)
+#this should give you the probability distribution in data frame form
+bin_distribution(10, 0.5)
+#this has class 'bindis', which will allow you to plot later
+```
+
+```{r bin_cumulative example}
+#bin_cumulative
+#this should return a data frame of the probability distribution, as well as the cumulative probability distribution
+bin_cumulative(10, 0.5)
+#this has class 'bincum' which will allow you to plot later
+```
+***
+
+####Possible Summarization
+
+There is 1 *main* summarizing function included in the binomial package:
+
+* bin_variable
+
+
+...and here's how to call and use it:
+```{r}
+#bin_variable(10, 0.3)
+#there are three summarization options:
+object3 <- bin_variable(10, 0.3)
+object3
+#which gives a VERY basic summary
+print(object3)
+#another way to call it
+summary(object3)
+#which gives a more comprehensive summary of the binomial variable
+```
+
+
+***
+####Possible Visualizations
+
+There are 2 *main* computational functions that can be easily visualized:
+
+Using the plot() function:
+
+* bin_cumulative
+* bin_distribution
+
+...cumulative probabilities and probability distribution can be plotted.
+
+Any object of class bindis or bincum can be plotted. In other words, this means that if you assign a name to a data frame created by either bin_cumulative or bin_distribution, it should be 'plottable' by the base function plot().
+
+Here are some examples:
+
+```{r}
+#first assign your bin_distribution an object name
+object1 <- bin_distribution(10, 0.3)
+#then simply run it through the plot() function
+plot(object1)
+```
+
+```{r}
+#same thing with bin_cumulative
+#first assign your bin_cumulative an object name
+object2 <- bin_cumulative(10, 0.3)
+#then just run it through the plot() function
+plot(object2)
+```
+***
